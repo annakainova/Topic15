@@ -16,6 +16,10 @@ public class Ticket implements Comparable<Ticket> {
         this.time = time;
     }
 
+    public int getTime() {
+        return this.time;
+    }
+
     @Override
     public int compareTo(Ticket o) {
         if (this.price < o.price) {
