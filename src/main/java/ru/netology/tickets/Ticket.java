@@ -2,11 +2,11 @@ package ru.netology.tickets;
 
 public class Ticket implements Comparable<Ticket> {
 
-    int id;
-    int price;
-    String departureAirport;
-    String destinationAirport;
-    int time; // in min
+    private int id;
+    private int price;
+    private String departureAirport;
+    private String destinationAirport;
+    private int time; // in min
 
     public Ticket(int id, int price, String departureAirport, String destinationAirport, int time) {
         this.id = id;
@@ -14,6 +14,18 @@ public class Ticket implements Comparable<Ticket> {
         this.departureAirport = departureAirport;
         this.destinationAirport = destinationAirport;
         this.time = time;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getDepartureAirport() {
+        return departureAirport;
+    }
+
+    public String getDestinationAirport() {
+        return destinationAirport;
     }
 
     @Override

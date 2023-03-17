@@ -19,7 +19,7 @@ public class Manager {
 
         for (Ticket ticket : repository.getAll()) {
 
-            if (ticket.departureAirport == from && ticket.destinationAirport == to) {
+            if (ticket.getDepartureAirport() == from && ticket.getDestinationAirport() == to) {
                 Ticket[] tmp = new Ticket[result.length + 1];
 
                 for (int i = 0; i < result.length; i++) {

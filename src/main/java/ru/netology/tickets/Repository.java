@@ -23,7 +23,7 @@ public class Repository {
 
         int i = 0;
         for (Ticket t : tickets) {
-            if (t.id != ticket.id) {
+            if (t.getId() != ticket.getId()) {
                 tmp[i] = t;
                 i++;
             }
