@@ -13,6 +13,8 @@ public class ManagerTest {
     Ticket item6 = new Ticket(6, 12_000, "AAZ", "ABQ", 400);
     Ticket item7 = new Ticket(7, 12_000, "AAZ", "ABX", 400);
 
+    TicketByPriceAscComparator comparator = new TicketByPriceAscComparator();
+
     @Test
     public void addTicketTest() {
         Repository repo = new Repository();
@@ -90,6 +92,60 @@ public class ManagerTest {
 
         Ticket[] expected = {};
         Ticket[] actual = manager.findALl("AAA", "BBB");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void findAllTicketCheckSortTimeTest() {
+        Repository repo = new Repository();
+        Manager manager = new Manager(repo);
+
+        manager.addTicket(item1);
+        manager.addTicket(item3);
+        manager.addTicket(item5);
+        manager.addTicket(item6);
+        manager.addTicket(item4);
+        manager.addTicket(item2);
+
+        Ticket[] expected = {item1, item2, item5, item6};
+        Ticket[] actual = manager.findALl("AAZ", "ABQ", comparator);
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void findAllTicketCheckSortTimeOneTest() {
+        Repository repo = new Repository();
+        Manager manager = new Manager(repo);
+
+        manager.addTicket(item1);
+        manager.addTicket(item3);
+        manager.addTicket(item5);
+        manager.addTicket(item6);
+        manager.addTicket(item4);
+        manager.addTicket(item2);
+
+        Ticket[] expected = {item3};
+        Ticket[] actual = manager.findALl("FAZ", "MMQ", comparator);
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void findAllTicketCheckSortTimeNotFoundTest() {
+        Repository repo = new Repository();
+        Manager manager = new Manager(repo);
+
+        manager.addTicket(item1);
+        manager.addTicket(item3);
+        manager.addTicket(item5);
+        manager.addTicket(item6);
+        manager.addTicket(item4);
+        manager.addTicket(item2);
+
+        Ticket[] expected = {};
+        Ticket[] actual = manager.findALl("AAA", "BBB", comparator);
 
         Assertions.assertArrayEquals(expected, actual);
     }
